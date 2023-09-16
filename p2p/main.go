@@ -38,8 +38,9 @@ func connect() {
 	if err != nil {
 		panic(err)
 	}
-	fmt.Println("trying to connect")
-	connection, err2 := net.Dial("tcp", ip[0].String()+":"+port)
+	cleanip := ip[0].String() + ":" + port
+	fmt.Println("trying to connect to " + cleanip)
+	connection, err2 := net.Dial("tcp", cleanip)
 	if err2 != nil {
 		panic(err)
 	}
@@ -47,7 +48,7 @@ func connect() {
 	read(connection)
 	write(connection)
 
-}p[0].String()
+}
 func listen() {
 	print("port to listen:")
 	var port string
