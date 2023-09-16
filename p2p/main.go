@@ -34,15 +34,11 @@ func connect() {
 	print("port to connect:")
 	var port string
 	fmt.Scan(&port)
-	ip, err := net.LookupIP(host)
-	if err != nil {
-		panic(err)
-	}
-	cleanip := ip[0].String() + ":" + port
+	cleanip := host + ":" + port
 	fmt.Println("trying to connect to " + cleanip)
 	connection, err2 := net.Dial("tcp", cleanip)
 	if err2 != nil {
-		panic(err)
+		panic(err2)
 	}
 	fmt.Println("connected")
 	read(connection)
